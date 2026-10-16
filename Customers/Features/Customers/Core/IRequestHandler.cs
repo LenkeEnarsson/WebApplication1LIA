@@ -1,9 +1,9 @@
 ﻿using Common;
 
-namespace Customers.Features.Customers.Core
+namespace Customers.Features.Customers.Core;
+
+public interface IRequestHandler<TRequest, TResponse>
 {
-    public interface IRequestHandler<TRequest, TResponse>
-    {
-        Task<Result<TResponse>> HandleAsync(TRequest request);
-    }
+  Task<Result<TResponse>> HandleAsync(TRequest request);
 }
+

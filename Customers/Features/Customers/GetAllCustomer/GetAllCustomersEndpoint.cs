@@ -9,14 +9,15 @@ namespace Customers.Features.Customers.GetAllCustomer;
 public sealed class GetAllCustomersEndpoint
 : IEndpoint
 {
-    public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  {
+    _ = endpoints.MapGet("/", async (IRequestHandler<GetAllCustomersRequest, GetAllCustomersResponse> handler) =>
     {
-        _ = endpoints.MapGet("/", async (IRequestHandler<GetAllCustomersRequest, GetAllCustomersResponse> handler) =>
-        {
-            var result = await handler.HandleAsync(new GetAllCustomersRequest());
-            return result.ToMinimalApiResult(error => Results.NotFound(new { error }));
-        })
-        .WithName("GetAllCustomers");
-        return endpoints;
-    }
+      Result<GetAllCustomersResponse> result = await handler.HandleAsync(new GetAllCustomersRequest());
+      return result.ToMinimalApiResult(error => Results.NotFound(new { error }));
+    })
+      .Produces<GetAllCustomersResponse>()
+    .WithName("GetAllCustomers");
+    return endpoints;
+  }
 }

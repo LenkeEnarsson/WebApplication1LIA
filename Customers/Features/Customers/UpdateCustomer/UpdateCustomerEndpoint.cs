@@ -9,14 +9,15 @@ namespace Customers.Features.Customers.UpdateCustomer;
 public sealed class UpdateCustomerEndpoint
 : IEndpoint
 {
-    public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  {
+    _ = endpoints.MapPut("/", async (UpdateCustomerRequest request, IRequestHandler<UpdateCustomerRequest, UpdateCustomerResponse> handler) =>
     {
-        _ = endpoints.MapPut("/", async (UpdateCustomerRequest request, IRequestHandler<UpdateCustomerRequest, UpdateCustomerResponse> handler) =>
-        {
-            var result = await handler.HandleAsync(request);
-            return result.ToMinimalApiResult(error => Results.BadRequest(new { error }));
-        })
-        .WithName("UpdateCustomer");
-        return endpoints;
-    }
+      Result<UpdateCustomerResponse> result = await handler.HandleAsync(request);
+      return result.ToMinimalApiResult(error => Results.BadRequest(new { error }));
+    })
+      .Produces<UpdateCustomerResponse>()
+    .WithName("UpdateCustomer");
+    return endpoints;
+  }
 }

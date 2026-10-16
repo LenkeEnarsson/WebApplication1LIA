@@ -11,12 +11,12 @@ public sealed class DeleteCustomerEndpoint
 {
     public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
     {
-        _ = endpoints.MapDelete("/{id}", async (Guid id, IRequestHandler<DeleteCustomerRequest, DeleteCustomerResponse> handler) =>
-        {
-            var result = await handler.HandleAsync(new DeleteCustomerRequest(id));
-            //return result is null ? Results.NotFound() : Results.Ok(result);
-            return result.ToMinimalApiResult(error => Results.NotFound(new { error }));
-        })
+    _ = endpoints.MapDelete("/{id}", async (Guid id, IRequestHandler<DeleteCustomerRequest, DeleteCustomerResponse> handler) =>
+    {
+      var result = await handler.HandleAsync(new DeleteCustomerRequest(id));
+      return result.ToMinimalApiResult(error => Results.NotFound(new { error }));
+    })
+      .Produces<DeleteCustomerResponse>()
             .WithName("DeleteCustomer");
         return endpoints;
     }

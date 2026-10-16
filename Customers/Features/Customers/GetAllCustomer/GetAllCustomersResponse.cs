@@ -1,15 +1,5 @@
-﻿using System.Collections;
+﻿namespace Customers.Features.Customers.GetAllCustomer;
 
-namespace Customers.Features.Customers.GetAllCustomer;
-
-public sealed class GetAllCustomersResponse(IEnumerable<GetAllCustomersResponseItem> customers)
-    : IEnumerable<GetAllCustomersResponseItem>
-{
-    private readonly IEnumerable<GetAllCustomersResponseItem> customers = customers;
-
-    public IEnumerator<GetAllCustomersResponseItem> GetEnumerator() => customers.GetEnumerator();
-
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-}
+public sealed record GetAllCustomersResponse(IReadOnlyList<GetAllCustomersResponseItem> Customers);
 
 public record GetAllCustomersResponseItem(Guid id, string CompanyName);

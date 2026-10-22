@@ -1,12 +1,12 @@
-﻿using Employees.Features.Employees.Validation;
+﻿using Common;
+using Employees.Features.Employees.Validation;
 using FastEndpoints;
 using FluentValidation;
-using WebApplication3.Features.Employees.UpdateEmployee;
 
 namespace Employees.Features.Employees.UpdateEmployee;
 
 public sealed class UpdateEmployeeRequest
-    : ICommand<UpdateEmployeeResponse>
+    : ICommand<Result<UpdateEmployeeResponse>>
 {
   public Guid Id { get; set; }
   public string SSID { get; set; } = string.Empty;

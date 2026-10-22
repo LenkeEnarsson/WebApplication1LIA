@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 
 namespace Common;
+
 /// <summary>
 /// Lightweight Result pattern implementation for endpoints and application logic.
 /// Use Result.Success / Result.Failure for non-value results and Result&lt;T&gt; for value results.
@@ -84,7 +85,7 @@ public sealed class Result<T>
 
   public string? Error { get; }
 
-  private Result(bool isSuccess, T? value, string? error)
+  private Result(bool isSuccess, T? value, string? error) 
   {
     IsSuccess = isSuccess;
     Value = value;

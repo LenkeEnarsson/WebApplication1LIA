@@ -1,12 +1,12 @@
 ﻿using Common;
+using Employees.Features.Employees.Mappers;
+using Employees.Features.Employees.Models;
 using FastEndpoints;
 using Messaging.Abstract;
-using WebApplication3.Features.Employees.DeleteEmployee;
-using WebApplication3.Features.Employees.Models;
 
 namespace Employees.Features.Employees.DeleteEmployee;
 
-internal sealed class DeleteEmployeeHandler(DeleteEmployeeMapper mapper, IDeleteEmployeeService service, IMessaging<Employee> messaging)
+internal sealed class DeleteEmployeeHandler(DeleteEmployeeMapper mapper, IDeleteEmployeeService service, IMessaging<EmployeeContract> messaging)
     : ICommandHandler<DeleteEmployeeRequest, Result<DeleteEmployeeResponse>>
 {
   public async Task<Result<DeleteEmployeeResponse>> ExecuteAsync(DeleteEmployeeRequest request, CancellationToken cancellationToken)
@@ -18,7 +18,7 @@ internal sealed class DeleteEmployeeHandler(DeleteEmployeeMapper mapper, IDelete
       return Result.Failure<DeleteEmployeeResponse>($"Employee with id '{request.Id}' was not found.");
     }
 
-    await messaging.PublishAsync(new Message<Employee>(MessageType.Delete, employee), cancellationToken);
+    await messaging.PublishAsync(new Message<EmployeeContract>(MessageType.Delete, employee.ToContract()), cancellationToken);
 
     return Result.Success(mapper.FromEntity(employee));
   }

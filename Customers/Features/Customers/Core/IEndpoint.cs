@@ -4,5 +4,5 @@ namespace Customers.Features.Customers.Core;
 
 public interface IEndpoint
 {
-    IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints);
+  IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints);
 }

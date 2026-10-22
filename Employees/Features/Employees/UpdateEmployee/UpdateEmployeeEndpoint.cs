@@ -1,19 +1,18 @@
-﻿using Employees.Features.Employees.UpdateEmployee;
-using FastEndpoints;
+﻿using FastEndpoints;
 
-namespace WebApplication3.Features.Employees.UpdateEmployee;
+namespace Employees.Features.Employees.UpdateEmployee;
 
-internal sealed class UpdateEmployeeEndpoint 
+internal sealed class UpdateEmployeeEndpoint
   : Endpoint<UpdateEmployeeRequest, UpdateEmployeeResponse, UpdateEmployeeMapper>
 {
-    public override void Configure()
-    {
-        Put("employee");
-        AllowAnonymous();
-    }
+  public override void Configure()
+  {
+    Put("employee");
+    AllowAnonymous();
+  }
 
-    public override async Task HandleAsync(UpdateEmployeeRequest request, CancellationToken cancellationToken)
-    {
+  public override async Task HandleAsync(UpdateEmployeeRequest request, CancellationToken cancellationToken)
+  {
     var result = await request.ExecuteAsync(cancellationToken);
 
     if (result.IsFailure)
@@ -22,6 +21,5 @@ internal sealed class UpdateEmployeeEndpoint
       return;
     }
     await Send.OkAsync(result.Value, cancellationToken);
-
   }
 }

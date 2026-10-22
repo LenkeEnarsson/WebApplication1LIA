@@ -1,4 +1,4 @@
-﻿using WebApplication3.Features.Employees.Models;
+﻿using Employees.Features.Employees.Models;
 
 namespace Employees.Features.Employees.GetEmployee;
 

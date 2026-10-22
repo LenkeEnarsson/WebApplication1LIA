@@ -1,12 +1,11 @@
 ﻿using Common;
+using Employees.Features.Employees.Models;
 using FastEndpoints;
 using Messaging.Abstract;
-using WebApplication3.Features.Employees.Models;
-using WebApplication3.Features.Employees.UpdateEmployee;
 
 namespace Employees.Features.Employees.UpdateEmployee;
 
-internal sealed class UpdateEmployeeHandler(UpdateEmployeeMapper mapper, IUpdateEmployeeService service, IMessaging<Employee> messaging)
+public sealed class UpdateEmployeeHandler(UpdateEmployeeMapper mapper, IUpdateEmployeeService service, IMessaging<Employee> messaging)
     : ICommandHandler<UpdateEmployeeRequest, Result<UpdateEmployeeResponse>>
 {
   public async Task<Result<UpdateEmployeeResponse>> ExecuteAsync(UpdateEmployeeRequest command, CancellationToken cancellationToken)

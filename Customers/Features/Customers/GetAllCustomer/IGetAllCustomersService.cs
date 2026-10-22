@@ -4,5 +4,5 @@ namespace Customers.Features.Customers.GetAllCustomer;
 
 public interface IGetAllCustomersService
 {
-    Task<IEnumerable<Customer>> GetAll(CancellationToken cancellationToken = default);
+  Task<IEnumerable<Customer>> GetAll(CancellationToken cancellationToken = default);
 }

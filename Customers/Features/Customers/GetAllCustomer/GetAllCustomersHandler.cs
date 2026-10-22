@@ -10,6 +10,6 @@ public sealed class GetAllCustomersHandler(IGetAllCustomersService getAllCustome
   public async Task<Result<GetAllCustomersResponse>> HandleAsync(GetAllCustomersRequest request)
   {
     IEnumerable<Customer> allCustomers = await getAllCustomersService.GetAll();
-    return Result.Success(allCustomers.ToGetAllCustomersReponse());
+    return Result.Success(allCustomers.ToGetAllCustomersResponse());
   }
 }

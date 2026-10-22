@@ -42,8 +42,8 @@ public class CustomerInterceptor(IHttpContextAccessor httpContextAccessor)
               ? Guid.Parse(httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier))
               : Guid.Empty;
 
-    IEnumerable<EntityEntry<EntityBase>> entries = context.ChangeTracker.Entries<EntityBase>();
-    foreach (EntityEntry<EntityBase> entry in entries)
+    IEnumerable<EntityEntry<Customer>> entries = context.ChangeTracker.Entries<Customer>();
+    foreach (EntityEntry<Customer> entry in entries)
     {
       if (entry.State == EntityState.Added)
       {

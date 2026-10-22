@@ -1,4 +1,6 @@
-﻿namespace Customers.Features.Customers.Model;
+﻿using Common;
+
+namespace Customers.Features.Customers.Model;
 
 public sealed class Customer : EntityBase
 {

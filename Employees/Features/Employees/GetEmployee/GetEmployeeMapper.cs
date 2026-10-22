@@ -1,23 +1,22 @@
-﻿using Employees.Features.Employees.GetEmployee;
+﻿using Employees.Features.Employees.Models;
 using FastEndpoints;
-using WebApplication3.Features.Employees.Models;
 
-namespace WebApplication3.Features.Employees.GetEmployee;
+namespace Employees.Features.Employees.GetEmployee;
 
-internal sealed class GetEmployeeMapper 
+internal sealed class GetEmployeeMapper
     : Mapper<GetEmployeeRequest, GetEmployeeResponse, Employee>
 {
-    public override GetEmployeeResponse FromEntity(Employee e)
-    {
-        return new GetEmployeeResponse(
-          e.Id,
-          e.SSID,
-          e.Title,
-          e.GivenName,
-          e.Surname,
-          e.Street,
-          e.PostalCode,
-          e.City,
-          e.Phone);
-    }
+  public override GetEmployeeResponse FromEntity(Employee e)
+  {
+    return new GetEmployeeResponse(
+      e.Id, 
+      e.SSID, 
+      e.Title, 
+      e.GivenName, 
+      e.Surname, 
+      e.Street, 
+      e.PostalCode, 
+      e.City, 
+      e.Phone);
+  }
 }

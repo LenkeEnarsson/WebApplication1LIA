@@ -1,6 +1,5 @@
 ﻿using Common;
 using FastEndpoints;
-using WebApplication3.Features.Employees.DeleteEmployee;
 
 namespace Employees.Features.Employees.DeleteEmployee;
 

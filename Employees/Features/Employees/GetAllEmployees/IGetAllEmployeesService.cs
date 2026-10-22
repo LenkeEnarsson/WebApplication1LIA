@@ -1,8 +1,8 @@
-﻿using WebApplication3.Features.Employees.Models;
+﻿using Employees.Features.Employees.Models;
 
-namespace WebApplication3.Features.Employees.GetAllEmployees;
+namespace Employees.Features.Employees.GetAllEmployees;
 
 public interface IGetAllEmployeesService
 {
-    Task<IEnumerable<Employee>> GetAllEmployeesAsync(CancellationToken cancellationToken);
+  Task<IEnumerable<Employee>> GetAllEmployeesAsync(CancellationToken cancellationToken);
 }

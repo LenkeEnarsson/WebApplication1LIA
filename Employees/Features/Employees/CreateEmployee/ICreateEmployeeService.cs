@@ -1,8 +1,8 @@
-﻿using WebApplication3.Features.Employees.Models;
+﻿using Employees.Features.Employees.Models;
 
-namespace WebApplication3.Features.Employees.CreateEmployee;
+namespace Employees.Features.Employees.CreateEmployee;
 
 public interface ICreateEmployeeService
 {
-    Task<Employee> CreateEmployeeAsync(Employee employee, CancellationToken cancellationToken);
+  Task<Employee> CreateEmployeeAsync(Employee employee, CancellationToken cancellationToken);
 }

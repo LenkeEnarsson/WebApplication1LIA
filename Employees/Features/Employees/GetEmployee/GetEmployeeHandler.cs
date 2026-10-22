@@ -1,7 +1,6 @@
 ﻿using Common;
+using Employees.Features.Employees.Models;
 using FastEndpoints;
-using WebApplication3.Features.Employees.GetEmployee;
-using WebApplication3.Features.Employees.Models;
 
 namespace Employees.Features.Employees.GetEmployee;
 

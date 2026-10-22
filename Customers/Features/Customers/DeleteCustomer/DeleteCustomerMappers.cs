@@ -3,9 +3,11 @@ using Customers.Features.Customers.Model;
 
 public static class DeleteCustomerMappers
 {
-    extension(Customer customer)
+  extension(Customer customer)
+  {
+    public DeleteCustomerResponse ToDeleteCustomerResponse()
     {
-        public DeleteCustomerResponse ToDeleteCustomerResponse() => new DeleteCustomerResponse(
+      return new DeleteCustomerResponse(
       customer.Id,
       customer.CompanyName,
       customer.OrganizationNumber,
@@ -14,6 +16,7 @@ public static class DeleteCustomerMappers
       customer.PostalCode,
       customer.City,
       customer.Phone
-        );
+    );
     }
+  }
 }

@@ -1,7 +1,6 @@
 ﻿using global::Messaging.Abstract;
 using global::Messaging.Channels;
 using Microsoft.Extensions.DependencyInjection;
-using WebApplication3.Features.Employees.Models;
 
 namespace Employees.Infrastructure.Messaging;
 
@@ -11,8 +10,17 @@ public static class EmployeesMessagingExtensions
   {
     public IServiceCollection AddEmployeeMessaging()
     {
-      _=services.AddSingleton<IMessaging<Employee>, ChannelMessaging<Employee>>();
+      _ = services.AddSingleton<IMessaging<EmployeeContract>, ChannelMessaging<EmployeeContract>>();
       return services;
+
+      /*
+      if(Environment.GetEnvironmentVariable("ISMONOLITH")=="true")
+        services.AddMessagingChannels()
+          else
+      {
+        services.AddMessagingNats()
+      }
+      */
     }
   }
 }

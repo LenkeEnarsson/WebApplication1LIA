@@ -1,6 +1,6 @@
-﻿using WebApplication3.Features.Employees.Models;
+﻿using Employees.Features.Employees.Models;
 
-namespace WebApplication3.Features.Employees.DeleteEmployee;
+namespace Employees.Features.Employees.DeleteEmployee;
 
 public interface IDeleteEmployeeService
 {

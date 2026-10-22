@@ -1,17 +1,16 @@
-﻿using FastEndpoints;
-using WebApplication3.Features.Employees.Models;
-using WebApplication3.Features.Employees.UpdateEmployee;
+﻿using Employees.Features.Employees.Models;
+using FastEndpoints;
 
 namespace Employees.Features.Employees.UpdateEmployee;
 
-internal sealed class UpdateEmployeeMapper
+public sealed class UpdateEmployeeMapper
   : Mapper<UpdateEmployeeRequest, UpdateEmployeeResponse, Employee>
 {
   public override Employee ToEntity(UpdateEmployeeRequest r)
   {
     return new Employee
     {
-      Id = Guid.Parse(r.Id),
+      Id = r.Id,
       SSID = r.SSID,
       Title = r.Title,
       GivenName = r.GivenName,
@@ -22,6 +21,7 @@ internal sealed class UpdateEmployeeMapper
       Phone = r.Phone
     };
   }
+
   public override UpdateEmployeeResponse FromEntity(Employee e)
   {
     return new UpdateEmployeeResponse(

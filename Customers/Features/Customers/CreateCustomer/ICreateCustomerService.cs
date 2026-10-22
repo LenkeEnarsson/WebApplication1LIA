@@ -2,8 +2,8 @@
 
 namespace Customers.Features.Customers.CreateCustomer
 {
-    public interface ICreateCustomerService
-    {
-        Task<Customer> Create(Customer request, CancellationToken cancellationToken = default);
-    }
+  public interface ICreateCustomerService
+  {
+    Task<Customer> Create(Customer request, CancellationToken cancellationToken = default);
+  }
 }

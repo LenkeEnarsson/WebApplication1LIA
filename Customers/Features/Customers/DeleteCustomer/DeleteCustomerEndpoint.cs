@@ -9,8 +9,8 @@ namespace Customers.Features.Customers.DeleteCustomer;
 public sealed class DeleteCustomerEndpoint
 : IEndpoint
 {
-    public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
-    {
+  public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  {
     _ = endpoints.MapDelete("/{id}", async (Guid id, IRequestHandler<DeleteCustomerRequest, DeleteCustomerResponse> handler) =>
     {
       var result = await handler.HandleAsync(new DeleteCustomerRequest(id));
@@ -18,6 +18,6 @@ public sealed class DeleteCustomerEndpoint
     })
       .Produces<DeleteCustomerResponse>()
             .WithName("DeleteCustomer");
-        return endpoints;
-    }
+    return endpoints;
+  }
 }

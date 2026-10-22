@@ -2,8 +2,8 @@
 
 namespace Customers.Features.Customers.UpdateCustomer
 {
-    public interface IUpdateCustomerService
-    {
-        Task<Customer> Update(Customer request, CancellationToken cancellationToken = default);
-    }
+  public interface IUpdateCustomerService
+  {
+    Task<Customer> Update(Customer request, CancellationToken cancellationToken = default);
+  }
 }

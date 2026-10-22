@@ -1,11 +1,17 @@
 using Customers.Features.Customers.Extensions;
 using Customers.Infrastructure.Data.Extensions;
+using Customers.Infrastructure.Messaging;
+using Employees.Features.Employees.Extensions;
 using Employees.Infrastructure.Data.Extensions;
+using Employees.Infrastructure.Messaging;
 using FastEndpoints;
 using Scalar.AspNetCore;
-using Workload.Infrastructure.Data.Extensions;
+using Workloads.Infrastructure.Data.Extensions;
+using Workloads.Infrastructure.Messaging;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddUserSecrets(typeof(Program).Assembly);
+
 builder.Services.AddFastEndpoints();
 
 //Add services to the container
@@ -13,14 +19,14 @@ builder.Services.AddOpenApi();
 
 builder.Services //Registrera lyssnarna i workloadmodulen
   .AddCustomersMessaging()
-  .AddEmployeesMessaging()
+  .AddEmployeeMessaging()
   .AddWorkloadsMessaging();
 
 builder.Services
   .AddCustomersHandlers() //Registrerar mappers
-  .AddEmployeesHandlers();
+  .AddEmployeeHandlers();
 
-builder.Services 
+builder.Services
   .AddCustomersData(builder.Configuration)
   .AddEmployeesData(builder.Configuration) //Lägger även till DbContext
   .AddWorkloadsData(builder.Configuration); //Registrerar eventservice med workloadservice
@@ -43,6 +49,3 @@ app //Skapar dbContext och se till att det finns migration
 app.UseFastEndpoints();
 
 app.Run();
-
-
-

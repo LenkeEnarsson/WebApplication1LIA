@@ -11,45 +11,45 @@ namespace Common;
 /// </summary>
 public static class ResultHttpExtensions
 {
-    // Minimal API (IResult) mappings
-    public static IResult ToMinimalApiResult(this Result result, Func<string, IResult>? failureMapper = null)
-    {
-        ArgumentNullException.ThrowIfNull(result);
+  // Minimal API (IResult) mappings
+  public static IResult ToMinimalApiResult(this Result result, Func<string, IResult>? failureMapper = null)
+  {
+    ArgumentNullException.ThrowIfNull(result);
 
-        if (result.IsSuccess) return Results.NoContent();
+    if (result.IsSuccess) return Results.NoContent();
 
-        failureMapper ??= err => Results.BadRequest(new { error = err });
-        return failureMapper(result.Error!);
-    }
+    failureMapper ??= err => Results.BadRequest(new { error = err });
+    return failureMapper(result.Error!);
+  }
 
-    public static IResult ToMinimalApiResult<T>(this Result<T> result, Func<string, IResult>? failureMapper = null)
-    {
-        ArgumentNullException.ThrowIfNull(result);
+  public static IResult ToMinimalApiResult<T>(this Result<T> result, Func<string, IResult>? failureMapper = null)
+  {
+    ArgumentNullException.ThrowIfNull(result);
 
-        if (result.IsSuccess) return Results.Ok(result.Value);
+    if (result.IsSuccess) return Results.Ok(result.Value);
 
-        failureMapper ??= err => Results.BadRequest(new { error = err });
-        return failureMapper(result.Error!);
-    }
+    failureMapper ??= err => Results.BadRequest(new { error = err });
+    return failureMapper(result.Error!);
+  }
 
-    // MVC Controller mappings (IActionResult)
-    public static IActionResult ToActionResult(this Result result, Func<string, IActionResult>? failureMapper = null)
-    {
-        ArgumentNullException.ThrowIfNull(result);
+  // MVC Controller mappings (IActionResult)
+  public static IActionResult ToActionResult(this Result result, Func<string, IActionResult>? failureMapper = null)
+  {
+    ArgumentNullException.ThrowIfNull(result);
 
-        if (result.IsSuccess) return new NoContentResult();
+    if (result.IsSuccess) return new NoContentResult();
 
-        failureMapper ??= err => new BadRequestObjectResult(new { error = err });
-        return failureMapper(result.Error!);
-    }
+    failureMapper ??= err => new BadRequestObjectResult(new { error = err });
+    return failureMapper(result.Error!);
+  }
 
-    public static IActionResult ToActionResult<T>(this Result<T> result, Func<string, IActionResult>? failureMapper = null)
-    {
-        ArgumentNullException.ThrowIfNull(result);
+  public static IActionResult ToActionResult<T>(this Result<T> result, Func<string, IActionResult>? failureMapper = null)
+  {
+    ArgumentNullException.ThrowIfNull(result);
 
-        if (result.IsSuccess) return new OkObjectResult(result.Value);
+    if (result.IsSuccess) return new OkObjectResult(result.Value);
 
-        failureMapper ??= err => new BadRequestObjectResult(new { error = err });
-        return failureMapper(result.Error!);
-    }
+    failureMapper ??= err => new BadRequestObjectResult(new { error = err });
+    return failureMapper(result.Error!);
+  }
 }

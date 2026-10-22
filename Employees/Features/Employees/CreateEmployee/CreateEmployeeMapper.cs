@@ -1,5 +1,5 @@
-﻿using FastEndpoints;
-using WebApplication3.Features.Employees.Models;
+﻿using Employees.Features.Employees.Models;
+using FastEndpoints;
 
 namespace Employees.Features.Employees.CreateEmployee;
 
@@ -20,6 +20,7 @@ internal sealed class CreateEmployeeMapper
       Phone = r.Phone
     };
   }
+
   public override CreateEmployeeResponse FromEntity(Employee e)
   {
     return new CreateEmployeeResponse(

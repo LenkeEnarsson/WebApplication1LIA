@@ -21,14 +21,14 @@ public static class UpdateCustomerMappers
   extension(Customer customer)
   {
     public UpdateCustomerResponse ToUpdateCustomerResponse() => new UpdateCustomerResponse(
-  customer.Id,
-  customer.CompanyName,
-  customer.OrganizationNumber,
-  customer.ContactName,
-  customer.Street,
-  customer.PostalCode,
-  customer.City,
-  customer.Phone
+      customer.Id,
+      customer.CompanyName,
+      customer.OrganizationNumber,
+      customer.ContactName,
+      customer.Street,
+      customer.PostalCode,
+      customer.City,
+      customer.Phone
     );
   }
 }

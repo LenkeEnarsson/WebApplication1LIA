@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Customers.Infrastructure.Data.Context;
 
-public class CustomerContext(DbContextOptions<CustomerContext> options) 
+public class CustomerContext(DbContextOptions<CustomerContext> options)
   : DbContext(options)
 {
   public DbSet<Customer> Customers => Set<Customer>();

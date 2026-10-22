@@ -1,6 +1,5 @@
 ﻿using Common;
 using FastEndpoints;
-using WebApplication3.Features.Employees.GetEmployee;
 
 namespace Employees.Features.Employees.GetEmployee;
 
@@ -24,6 +23,5 @@ internal sealed class GetEmployeeEndpoint
     }
 
     _ = await Send.OkAsync(response.Value, cancellationToken);
-
   }
 }

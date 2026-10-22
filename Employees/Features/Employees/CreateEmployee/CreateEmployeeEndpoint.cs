@@ -4,7 +4,7 @@ using FastEndpoints;
 namespace Employees.Features.Employees.CreateEmployee;
 
 internal sealed class CreateEmployeeEndpoint
-  : Endpoint<CreateEmployeeRequest, CreateEmployeeResponse>
+  : Endpoint<CreateEmployeeRequest, CreateEmployeeResponse, CreateEmployeeMapper>
 {
   public override void Configure()
   {

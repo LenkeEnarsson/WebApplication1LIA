@@ -1,7 +1,6 @@
 ﻿using Common;
+using Employees.Features.Employees.Models;
 using FastEndpoints;
-using WebApplication3.Features.Employees.GetAllEmployees;
-using WebApplication3.Features.Employees.Models;
 
 namespace Employees.Features.Employees.GetAllEmployees;
 
@@ -16,4 +15,3 @@ internal sealed class GetAllEmployeesHandler(GetAllEmployeesMapper mapper, IGetA
   : Result.Success(mapper.FromEntity(response));
   }
 }
-

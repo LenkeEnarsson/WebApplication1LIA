@@ -13,6 +13,7 @@ public class ChannelMessaging<T>(ILogger<ChannelMessaging<T>> logger) : IMessagi
   {
     return Task.CompletedTask;
   }
+
   public async IAsyncEnumerable<Message<T>> ConsumeAsync([EnumeratorCancellation] CancellationToken cancellationToken)
   {
     if (channel is not null)

@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Employees.Features.Employees.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using WebApplication3.Features.Employees.Models;
 
 namespace Employees.Infrastructure.Data.Configuration;
 
@@ -23,5 +23,3 @@ public class EmployeeConfiguration
     _ = builder.Property(e => e.Phone).IsRequired();
   }
 }
-
-

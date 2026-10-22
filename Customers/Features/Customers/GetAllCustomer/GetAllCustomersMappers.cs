@@ -2,15 +2,21 @@
 
 namespace Customers.Features.Customers.GetAllCustomer
 {
-    public static class GetAllCustomersMappers
+  public static class GetAllCustomersMappers
+  {
+    extension(IEnumerable<Customer> customers)
     {
-        extension(IEnumerable<Customer> customers)
-        {
-            public GetAllCustomersResponse ToGetAllCustomersReponse() => 
-                new(customers.Select(customer => new GetAllCustomersResponseItem(
-                customer.Id,
-                customer.CompanyName
-            )));
-        }
+      public GetAllCustomersResponse ToGetAllCustomersResponse() =>
+        new GetAllCustomersResponse([.. customers.Select(customer => new GetAllCustomersResponseItem(
+      customer.Id,
+      customer.CompanyName,
+      customer.OrganizationNumber,
+      customer.ContactName,
+      customer.Street,
+      customer.PostalCode,
+      customer.City,
+      customer.Phone
+    ))]);
     }
+  }
 }

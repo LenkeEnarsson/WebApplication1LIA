@@ -1,6 +1,6 @@
-﻿using Customers.Features.Customers.Model;
+﻿using Common;
 
-namespace WebApplication3.Features.Employees.Models;
+namespace Employees.Features.Employees.Models;
 
 public sealed class Employee : EntityBase
 {

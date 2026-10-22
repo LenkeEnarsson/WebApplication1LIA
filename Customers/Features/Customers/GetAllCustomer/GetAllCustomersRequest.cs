@@ -1,4 +1,3 @@
-﻿namespace Customers.Features.Customers.GetAllCustomer
-{
-    public record GetAllCustomersRequest();
-}
+﻿namespace Customers.Features.Customers.GetAllCustomer;
+
+public record GetAllCustomersRequest();

@@ -4,6 +4,8 @@
 		<TargetFramework>net10.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<UserSecretsId>f01fa296-aeb3-4724-aa4d-ac4a73e04bb6</UserSecretsId>
+
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,6 +21,7 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="6.0.1" />
 	</ItemGroup>
 
 

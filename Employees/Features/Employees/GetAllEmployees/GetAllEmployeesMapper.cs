@@ -1,8 +1,7 @@
-﻿using FastEndpoints;
-using WebApplication3.Features.Employees.Models;
+﻿using Employees.Features.Employees.Models;
+using FastEndpoints;
 
-namespace WebApplication3.Features.Employees.GetAllEmployees;
-
+namespace Employees.Features.Employees.GetAllEmployees;
 
 public sealed class GetAllEmployeesMapper
   : Mapper<GetAllEmployeesRequest, GetAllEmployeesResponse, IEnumerable<Employee>>
@@ -12,8 +11,14 @@ public sealed class GetAllEmployeesMapper
     return new GetAllEmployeesResponse(employees.Select(employee => new GetAllEmployeesResponseItem
     (
       employee.Id,
+      employee.SSID,
+      employee.Title,
       employee.GivenName,
-      employee.Surname
+      employee.Surname,
+      employee.Street,
+      employee.PostalCode,
+      employee.City,
+      employee.Phone
     )).ToList());
   }
 }

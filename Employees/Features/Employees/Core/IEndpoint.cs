@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Routing;
 
-namespace Customers.Features.Employees.Core;
+namespace Employees.Features.Employees.Core;
 
 public interface IEndpoint
 {
-    IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints);
+  IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints);
 }

@@ -9,15 +9,15 @@ namespace Customers.Features.Customers.CreateCustomer;
 public sealed class CreateCustomerEndpoint
 : IEndpoint
 {
-    public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  public IEndpointRouteBuilder SetupEndpoint(IEndpointRouteBuilder endpoints)
+  {
+    _ = endpoints.MapPost("/", async (CreateCustomerRequest request, IRequestHandler<CreateCustomerRequest, CreateCustomerResponse> handler) =>
     {
-        _ = endpoints.MapPost("/", async (CreateCustomerRequest request, IRequestHandler<CreateCustomerRequest, CreateCustomerResponse> handler) =>
-        {
-            var result = await handler.HandleAsync(request);
-            return result.ToMinimalApiResult(error => Results.BadRequest(new { error }));
-        })
-        .WithName("CreateCustomer");
+      var result = await handler.HandleAsync(request);
+      return result.ToMinimalApiResult(error => Results.BadRequest(new { error }));
+    })
+    .WithName("CreateCustomer");
 
-        return endpoints;
-    }
+    return endpoints;
+  }
 }

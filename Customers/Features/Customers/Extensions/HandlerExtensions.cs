@@ -7,29 +7,29 @@ namespace Customers.Features.Customers.Extensions;
 
 public static class HandlersExtensions
 {
-    extension(IServiceCollection services)
+  extension(IServiceCollection services)
+  {
+    public IServiceCollection AddCustomersHandlers()
     {
-        public IServiceCollection AddCustomersHandlers()
+      _ = services.AddValidatorsFromAssembly(typeof(CreateCustomerValidation).Assembly, ServiceLifetime.Scoped);
+
+      IEnumerable<Type> handlerTypes = typeof(IRequestHandler<,>).Assembly
+          .GetTypes()
+          .Where(type => type is { IsClass: true, IsAbstract: false });
+
+      foreach (Type? handlerType in handlerTypes)
+      {
+        IEnumerable<Type> handlerInterfaces = handlerType
+            .GetInterfaces()
+            .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
+
+        foreach (Type? handlerInterface in handlerInterfaces)
         {
-            _ = services.AddValidatorsFromAssembly(typeof(CreateCustomerValidation).Assembly, ServiceLifetime.Scoped);
-
-            IEnumerable<Type> handlerTypes = typeof(IRequestHandler<,>).Assembly
-                .GetTypes()
-                .Where(type => type is { IsClass: true, IsAbstract: false });
-
-            foreach (Type? handlerType in handlerTypes)
-            {
-                IEnumerable<Type> handlerInterfaces = handlerType
-                    .GetInterfaces()
-                    .Where(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IRequestHandler<,>));
-
-                foreach (Type? handlerInterface in handlerInterfaces)
-                {
-                    _ = services.AddScoped(handlerInterface, handlerType);
-                }
-            }
-
-            return services;
+          _ = services.AddScoped(handlerInterface, handlerType);
         }
+      }
+
+      return services;
     }
+  }
 }

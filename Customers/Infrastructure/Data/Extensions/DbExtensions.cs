@@ -18,11 +18,13 @@ public static class DbExtensions
   {
     public IServiceCollection AddCustomersData(IConfiguration configuration)
     {
+      /*
       _ = services.AddDbContext<CustomerContext>((sp, options) =>
       {
-        _ = options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+        _ = options.UseSqlServer(configuration.GetConnectionString("CustomerDatabase"));
         _ = options.AddInterceptors(sp.GetRequiredService<CustomerInterceptor>());
       });
+      */
 
       _ = services.AddHttpContextAccessor();
       _ = services.AddSingleton<CustomerInterceptor>();
@@ -41,9 +43,10 @@ public static class DbExtensions
     {
       using var scope = app.Services.CreateScope();
       var context = scope.ServiceProvider.GetRequiredService<CustomerContext>();
-      
-      if(context.Database.GetPendingMigrations().Any())
+
+      if (context.Database.GetPendingMigrations().Any())
         context.Database.Migrate();
+
       return app;
     }
   }

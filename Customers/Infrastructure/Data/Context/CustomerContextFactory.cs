@@ -1,9 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Customers.Infrastructure.Data.Context;
 
@@ -14,13 +12,13 @@ internal class CustomerContextFactory
   {
     IConfigurationRoot config = new ConfigurationBuilder()
       .SetBasePath(Directory.GetCurrentDirectory())
-      .AddUserSecrets<CustomerContextFactory>()
+      .AddUserSecrets<CustomerContextFactory>(optional: true)
       .Build();
 
-    var optionsbuilder = new DbContextOptionsBuilder<CustomerContext>();
-    optionsbuilder.UseSqlServer(config.GetConnectionString("CustomersConnection"));
+    DbContextOptionsBuilder<CustomerContext> optionsbuilder = new();
+    _ = optionsbuilder.UseSqlServer(/*"Server=(localdb)\\mssqLLocalDB;Database=CustomersDb;Trusted_Connection=True;TrustServerCertificate=True"*/
+      config.GetConnectionString("CustomerDatabase"));
 
     return new CustomerContext(optionsbuilder.Options);
   }
-
 }
